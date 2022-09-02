@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-const Animal = () => {
+
+const More = () => {
   const Items = [
     {
       id: 0,
@@ -70,15 +70,9 @@ const Animal = () => {
 
   return (
     <Container>
-      <Title>
-        <TextTitle>보호소 동물 친구들 🐹</TextTitle>
-        <Link to="/more">
-          <More>전체 보기</More>
-        </Link>
-      </Title>
       <Content>
         {Items &&
-          Items.filter((item) => item.id < 12).map((item, key) => (
+          Items.map((item, key) => (
             <Wrap key={key}>
               <img src={item.img} alt="쿠팡" />
             </Wrap>
@@ -87,24 +81,17 @@ const Animal = () => {
     </Container>
   );
 };
+
 const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  background-color: bisque;
   border: 2px solid white;
-  padding: 30px;
-`;
-const Title = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-`;
-const TextTitle = styled.h2``;
-const More = styled.h3`
-  cursor: pointer;
-  text-decoration: none;
-  color: #e496a4;
 `;
 
 const Content = styled.div`
-  padding: 20px 50px 30px 50px;
+  padding: 20px 50px 70px 50px;
   display: grid;
   grid-gap: 25px;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -144,5 +131,4 @@ const Wrap = styled.div`
     border-color: rgba(249, 249, 249, 0.8);
   }
 `;
-
-export default Animal;
+export default More;
