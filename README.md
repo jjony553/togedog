@@ -9,7 +9,19 @@ https://toge-dog-b6ba8.web.app/
 ```
 React, styled Components, Firebase hosting,
 ```
+- Install
+```
+//create app
+npx create-react-app project --template redux
 
+//css
+npm add styled-components
+
+//animate
+npm install animate.css --save
+https://animate.style/
+
+```
 ## Data
 ```
 data.gg.go.kr
