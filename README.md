@@ -2,5 +2,11 @@
 ## For those who have lost their home
 ## Made by React
 
-### Frame
-![screencapture-localhost-3000-2022-09-02-07_48_56](https://user-images.githubusercontent.com/55618626/188025570-211441c7-bb4d-4f47-9dce-67be8df0ffc7.png)
+## Screen Shot
+
+### Home
+![screencapture-localhost-3000-2022-09-04-09_06_46](https://user-images.githubusercontent.com/55618626/188291399-d3168533-a893-469e-982a-fe5f1eca57f3.png)
+
+
+### About
+![screencapture-localhost-3000-about-2022-09-04-09_07_05](https://user-images.githubusercontent.com/55618626/188291400-79c002be-ca84-457d-971d-fcea66d9533a.png)
