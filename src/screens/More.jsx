@@ -1,80 +1,27 @@
 import styled from "styled-components";
-
+import { useEffect, useState } from "react";
+import * as env from "../env";
 const More = () => {
-  const Items = [
-    {
-      id: 0,
-      img: "https://image.fmkorea.com/files/attach/new2/20210302/2063168106/62449231/3425868502/080f5a155f81a0cc2bbc6052fb9f2225.jpg",
-    },
-    {
-      id: 1,
-      img: "https://m.sleepnsleepmall.com/web/product/medium/202207/be10cef08bff16ef03355be34c8b73e6.jpg",
-    },
-    {
-      id: 2,
-      img: "https://pbs.twimg.com/media/E_EHtIpVgAQoM2i.jpg",
-    },
-    {
-      id: 3,
-      img: "http://www.nubizio.co.kr/shopimages/nubizio777/0790060000413.jpg",
-    },
-    {
-      id: 4,
-      img: "https://image.fmkorea.com/files/attach/new2/20210302/2063168106/62449231/3425868502/080f5a155f81a0cc2bbc6052fb9f2225.jpg",
-    },
-    {
-      id: 5,
-      img: "https://m.sleepnsleepmall.com/web/product/medium/202207/be10cef08bff16ef03355be34c8b73e6.jpg",
-    },
-    {
-      id: 6,
-      img: "https://pbs.twimg.com/media/E_EHtIpVgAQoM2i.jpg",
-    },
-    {
-      id: 7,
-      img: "http://www.nubizio.co.kr/shopimages/nubizio777/0790060000413.jpg",
-    },
-    {
-      id: 8,
-      img: "https://image.fmkorea.com/files/attach/new2/20210302/2063168106/62449231/3425868502/080f5a155f81a0cc2bbc6052fb9f2225.jpg",
-    },
-    {
-      id: 9,
-      img: "https://m.sleepnsleepmall.com/web/product/medium/202207/be10cef08bff16ef03355be34c8b73e6.jpg",
-    },
-    {
-      id: 10,
-      img: "https://pbs.twimg.com/media/E_EHtIpVgAQoM2i.jpg",
-    },
-    {
-      id: 11,
-      img: "http://www.nubizio.co.kr/shopimages/nubizio777/0790060000413.jpg",
-    },
-    {
-      id: 12,
-      img: "https://image.fmkorea.com/files/attach/new2/20210302/2063168106/62449231/3425868502/080f5a155f81a0cc2bbc6052fb9f2225.jpg",
-    },
-    {
-      id: 13,
-      img: "https://m.sleepnsleepmall.com/web/product/medium/202207/be10cef08bff16ef03355be34c8b73e6.jpg",
-    },
-    {
-      id: 14,
-      img: "https://pbs.twimg.com/media/E_EHtIpVgAQoM2i.jpg",
-    },
-    {
-      id: 15,
-      img: "http://www.nubizio.co.kr/shopimages/nubizio777/0790060000413.jpg",
-    },
-  ];
+  const [animalData, setAnimalData] = useState([]);
 
+  useEffect(() => {
+    fetch(
+      `https://openapi.gg.go.kr/AbdmAnimalProtect?KEY=${env.API_KEY}&Type=json`
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setAnimalData(data.AbdmAnimalProtect[1].row);
+      });
+  }, []);
   return (
     <Container>
       <Content>
-        {Items &&
-          Items.map((item, key) => (
+        {animalData &&
+          animalData.map((item, key) => (
             <Wrap key={key}>
-              <img src={item.img} alt="쿠팡" />
+              <img src={item.IMAGE_COURS} alt="" />
             </Wrap>
           ))}
       </Content>

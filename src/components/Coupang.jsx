@@ -26,13 +26,7 @@ const Coupang = () => {
         {Items &&
           Items.map((item, key) => (
             <Wrap key={key}>
-              <iframe
-                title={item.id}
-                src={item.iframe}
-                frameborder="0"
-                scrolling="no"
-                referrerpolicy="unsafe-url"
-              ></iframe>
+              <iframe title={item.id} src={item.iframe} scrolling="no"></iframe>
             </Wrap>
           ))}
       </Content>
@@ -86,6 +80,7 @@ const Wrap = styled.div`
     width: 100%;
     z-index: 1;
     top: 0;
+    border: none;
   }
   &:hover {
     box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
