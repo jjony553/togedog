@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
-const Detail = ({ onClose }) => {
+const Detail = ({ detailData, onClose }) => {
   return (
-    <Container>
+    <Container onClick={onClose}>
       <DetailInfo>
-        <DetailImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHwCJXtxOMxCa3rRk21Ky1pVxbhWfm20_Hjw&usqp=CAU"></DetailImage>
+        <DetailImage src={detailData.IMAGE_COURS}></DetailImage>
         <DetailAnimalInfo>
-          <DetailClose onClick={onClose}>X</DetailClose>
+          <DetailClose onClick={onClose}>✖</DetailClose>
           <DetailContent>
-            <Id>아이디(이름이 없어요.):</Id>
-            <Age>나이:</Age>
-            <Species>종:</Species>
-            <Sex>성별:</Sex>
-            <State>상태:</State>
-            <Feature>특징:</Feature>
-            <ShterName>보호소 이름:</ShterName>
-            <ShterTel>보호소 번호:</ShterTel>
-            <ShterPlace>보호 장소:</ShterPlace>
+            <Id>아이디: {detailData.ABDM_IDNTFY_NO} </Id>
+            <Age>나이: {detailData.AGE_INFO}</Age>
+            <Species>종: {detailData.SPECIES_NM}</Species>
+            <Sex>성별: {detailData.SEX_NM === "M" ? "남" : "여"}</Sex>
+            <Feature>특징: {detailData.SFETR_INFO}</Feature>
+            <Devider></Devider>
+            <ShterName>보호소 이름: {detailData.SHTER_NM}</ShterName>
+            <ShterTel>보호소 연락처: {detailData.SHTER_TELNO}</ShterTel>
+            <ShterPlace>보호소 위치: {detailData.PROTECT_PLC}</ShterPlace>
           </DetailContent>
         </DetailAnimalInfo>
       </DetailInfo>
@@ -34,7 +34,8 @@ const Container = styled.div`
   left: 0;
 `;
 const DetailInfo = styled.div`
-  width: 40%;
+  width: 60%;
+  height: 50%;
   position: fixed;
   top: 40%;
   left: 50%;
@@ -43,19 +44,19 @@ const DetailInfo = styled.div`
   background-color: white;
 `;
 const DetailImage = styled.img`
-  width: 60%;
+  width: 50%;
   border: 10px solid white;
+  object-fit: cover;
 `;
 const DetailAnimalInfo = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 20px;
 `;
-const DetailClose = styled.div`
+const DetailClose = styled.p`
   display: flex;
   justify-content: end;
-  font-size: 20px;
-  margin: 16px 16px 0px 0px;
   cursor: pointer;
 `;
 const DetailContent = styled.div`
@@ -64,14 +65,23 @@ const DetailContent = styled.div`
   gap: 1rem;
 `;
 
-const Id = styled.span``;
-const Age = styled.span``;
-const Species = styled.span``;
-const Sex = styled.span``;
-const State = styled.span``;
-const Feature = styled.span``;
-const ShterName = styled.span``;
-const ShterTel = styled.span``;
-const ShterPlace = styled.span``;
+const Id = styled.span`
+  font-weight: 500;
+`;
+const Age = styled(Id)``;
+const Species = styled(Id)``;
+const Sex = styled(Id)``;
+const Feature = styled.span`
+  margin-bottom: 20px;
+  font-weight: 500;
+`;
+const Devider = styled.div`
+  height: 5px;
+  width: 100%;
+  background-color: lightgrey;
+`;
+const ShterName = styled(Id)``;
+const ShterTel = styled(Id)``;
+const ShterPlace = styled(Id)``;
 
 export default Detail;

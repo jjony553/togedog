@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <Container>
       <Banner />
-      <Animal />
+      <Animal itemSlice={12} />
       <Coupang />
     </Container>
   );

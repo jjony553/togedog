@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import * as env from "../env";
+import * as env from "../common/env";
 import Detail from "./Detail";
-const Animal = () => {
+const Animal = ({ itemSlice }) => {
   const [animalData, setAnimalData] = useState([]);
   const [openDetail, setOpenDetail] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [detailData, setDetailData] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     fetch(
@@ -20,8 +22,9 @@ const Animal = () => {
       });
   }, []);
 
-  const handleOpen = (index) => {
+  const handleOpen = (index, item) => {
     setSelectedItem(index);
+    setDetailData(item);
     setOpenDetail(true);
   };
 
@@ -29,19 +32,23 @@ const Animal = () => {
     <Container>
       <Title>
         <TextTitle>보호소 동물 친구들 🐹</TextTitle>
-        <Link to="/more">
-          <More>더 보기</More>
-        </Link>
+        {location.pathname === "/" && (
+          <Link to="/more">
+            <More>더 보기</More>
+          </Link>
+        )}
       </Title>
-      {openDetail && <Detail onClose={() => setOpenDetail(false)} />}
+      {openDetail && (
+        <Detail detailData={detailData} onClose={() => setOpenDetail(false)} />
+      )}
       <Content>
         {animalData &&
-          animalData.slice(0, 12).map((item, index) => (
+          animalData.slice(0, itemSlice).map((item, index) => (
             <Wrap key={item.ABDM_IDNTFY_NO}>
               <AnimalImage
                 src={item.IMAGE_COURS}
                 alt=""
-                onClick={() => handleOpen(index)}
+                onClick={() => handleOpen(index, item)}
               />
             </Wrap>
           ))}
